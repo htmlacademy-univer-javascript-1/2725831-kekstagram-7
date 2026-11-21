@@ -22,3 +22,16 @@ function extractNumbers(str){
   }
   return parseInt(numStr, 10);
 }
+
+function toMinutes(time){
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function checkMeetTime(startWork, endWork, startMeet, timeMeet){
+  startWork = toMinutes(startWork);
+  endWork = toMinutes(endWork);
+  startMeet = toMinutes(startMeet);
+  const endMeet = startMeet + timeMeet;
+  return startMeet >= startWork && endMeet <= endWork;
+}
